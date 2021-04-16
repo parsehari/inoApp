@@ -69,6 +69,9 @@
     <feature name="NetworkStatus">
         <param name="ios-package" value="CDVConnection" />
     </feature>
+    <feature name="SQLitePlugin">
+        <param name="ios-package" value="SQLitePlugin" />
+    </feature>
     <name>MNKMobile</name>
     <description>
         Mallincrodt Mobile Delivery Tracking App.

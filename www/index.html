@@ -2,12 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+  
+    <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *">    
+   
     <meta http-equiv="Content-Type" charset="utf-8">
     <meta Name="msapplication-tap-highlight" content="no">
     <meta Name="format-detection" content="telephone=no">
     <meta Name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <meta Name="apple-mobile-web-app-capable" content="yes">
-
     <script type="text/javascript" src="cordova.js"></script>
 
     <!-- Jquery Mobile Framework -->
@@ -23,6 +25,7 @@
 
     <!-- Application styles -->
     <link rel="stylesheet" type="text/css" href="css/style.min.css">
+    
     <!-- Application styles -->
 
     <!-- Database Setup -->
@@ -52,8 +55,8 @@
                     <button id="signIn-btn" type="button">Sign In</button>
                 </a>
             </div>
-
             <div class="imgDiv"><img class="logo" src="img/LOGO_Mallinckrodt-color.png"></div>
+            
         </div>
 
 
@@ -320,21 +323,24 @@
         </div>
 
         <div data-role="content">
-
-            <!-- Scan Panel -->
+            <!--Added By Hari.. Scan Panel -->
             <div id="scan-panel">
                 <div class="details-header-text slider-header-text">Scan
-                    <span id="scan-title"></span> Item</div>
-                <div class="scan-input-header">Serial Number</div>
+                    <span id="scan-title"></span> Item
+                </div>
+
                 <div class="details-input-wraps">
+                    <span class="scan-input-header">Serial Number</span>
                     <input id="item-serial-no" placeholder="Tap to scan and enter serial">
                 </div>
-                <div class="scan-input-header">Material Number</div>
+
                 <div class="details-input-wraps">
+                    <span class="scan-input-header">Material Number</span>
                     <input id="item-material-no" placeholder="Tap to scan and enter material">
                 </div>
-                <div class="scan-input-header">Batch Number</div>
+
                 <div class="details-input-wraps">
+                    <span class="scan-input-header">Batch Number</span>
                     <input id="item-batch-no" placeholder="Tap to scan and enter batch">
                 </div>
 
@@ -434,6 +440,7 @@
                     <div class="footer" id="details-footer">
                         <a id="exitBtn" data-rel="popup" data-position-to="window" data-role="button" class="exit-page active-btn">Exit</a>
                         <a id="reviewBtn" href="#review-view" data-role="button" class="active-btn">Review</a>
+                        <a id="scanBtn" href="#barcodeScan-view" data-role="button" class="active-btn" style="font-size: 1.3em;padding-top:17px">Scan 2D barcode</a>
                     </div>
                 </div>
             </div>
@@ -693,6 +700,7 @@
         </div>
     </div>
     <!-- end details view -->
+    
 
     <!-- Route Plan Review View -->
     <div id="review-view" data-role="page" class="background-interior">
@@ -831,6 +839,64 @@
             </div>
         </div>
 
+    </div>
+
+
+    <!-- Route Plan barcodeScan-view .. Hari-->
+    <div id="barcodeScan-view" data-role="page" class="background-interior">
+        <!-- HEADER -->
+        <div data-role="header" class="header">
+
+            <a class="back-btn">
+                <span class="back-link-label">Back to order detail</span>
+            </a>
+
+            <!-- <a id="edit-btn" class="ui-link ui-btn-right ui-btn ui-shadow ui-corner-all active-btn">
+                <img src="./img/ICON_pen.png">
+            </a>
+            <a id="edit-done-btn" class="ui-link ui-btn-right ui-btn ui-shadow ui-corner-all active-btn" style="display:none;">
+                <img src="./img/ICON_check2.png">
+            </a> -->
+            <div class="header-text"></div>
+        </div>
+        <!-- CONTENT -->
+        <div data-role="content" class="ui-content" role="main">
+            
+            <div id="review-top-wrap">
+                <div id="info-wrap-scan">
+                    <div class="inner-info-wrap-left-scan">
+                     <div id="scan-plan-review-date" class="info-long">Date</div>
+                     <div id="scan-plan-review-route-name" class="info-long">Route #</div>
+                     <div id="scan-plan-review-driver-name" class="info-long">Drive Name</div>
+                    </div>
+                    <div class="inner-info-wrap-left-scan">
+                        <div id="scan-plan-review-location" class="info-long">Location</div>
+                        <div id="scan-plan-review-name" class="info-long">Name</div>
+                        <div id="scan-plan-review-order-no" class="info-long">Order #</div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-scan">
+                <input id="scaninputID" placeholder="Tap to scan OR enter serial" style="border: 1px solid rgba(210, 204, 228, .5);
+                border-radius: 2px;
+                height: 55px;
+                background: #fff;
+                font-size: 20px;
+                color: #423c54;">
+            </div>
+            <div class="rowcustom">
+                <div class="column1">
+                   <table id="productTable" class="table table-bordered table-condensed table-striped">
+                    <thead><tr><th style='font-size: 13px;'>Serial Number (<span id="serialnum"></span>)</th></tr></thead>
+                    </table> 
+                </div>
+            </div>
+             <!-- BUTTONS @ THE BOTTOM -->
+             <div class="footer inventory-footer">
+                <a id="scanConfirmBtn" class="active-btn ui-link ui-btn ui-shadow ui-corner-all" data-role="button" role="button">Confirm</a>
+            </div>
+        </div>
+       
     </div>
 
     <!-- end Route Plan Review View -->

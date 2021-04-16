@@ -512,7 +512,7 @@ var dbQueries = {
 	},
 
 	setItemDetailsToDefault: function (routePlanId, callBackFunction) {
-		var sql = " UPDATE DeliveryPickup SET ConfirmedQty = '0' WHERE OrderNo IN (Select OrderNo from RouteDetails where RoutePlanId = ?)";
+		var sql = " UPDATE DeliveryPickup SET ConfirmedQty = '0',BatchQty = '0' WHERE OrderNo IN (Select OrderNo from RouteDetails where RoutePlanId = ?)";
 		var params = [routePlanId];
 		this.executeQuery(sql, params, function (result) {
 			switch (result.status) {
@@ -543,7 +543,7 @@ var dbQueries = {
 
 	//Delete recently Scanned Data and Undo arrival
 	updateConfirmedQtyToNull: function (orderNo, callBackFunction) {
-		var sql = "update DeliveryPickup set ConfirmedQty = '0'  where OrderNo = ?";
+		var sql = "update DeliveryPickup set ConfirmedQty = '0',BatchQty = '0'  where OrderNo = ?";
 		var params = [orderNo];
 		this.executeQuery(sql, params, function (result) {
 			switch (result.status) {
@@ -607,7 +607,7 @@ var dbQueries = {
 	},
 
 	getDeliveryDetails: function (orderNo, callBackFunction) {
-		var sql = "SELECT SUM(ExpectedQty) 'ExpectedQty' , SUM(ConfirmedQty) 'ConfirmedQty', Item, Description FROM DeliveryPickup where Type != 'X' and OrderNo=? group by Item , Description";
+		var sql = "SELECT SUM(ExpectedQty) 'ExpectedQty' , SUM(ConfirmedQty) 'ConfirmedQty',BatchQty, Item, Description FROM DeliveryPickup where Type != 'X' and OrderNo=? group by Item , Description";
 		var params = [orderNo];
 		this.executeQuery(sql, params, function (result) {
 			switch (result.status) {
@@ -663,9 +663,9 @@ var dbQueries = {
 		});
 	},
 
-	updateConfirmedQtyForDelivery: function (confirmedQty, orderNo, item, callBackFunction) {
-		var sql = "update DeliveryPickup set ConfirmedQty = ? where OrderNo = ? and Item = ? and Type != 'X'";
-		var params = [confirmedQty, orderNo, item];
+	updateConfirmedQtyForDelivery: function (confirmedQty,BatchQty, orderNo, item, callBackFunction) {
+		var sql = "update DeliveryPickup set ConfirmedQty = ?, BatchQty = ?  where OrderNo = ? and Item = ? and Type != 'X'";
+		var params = [confirmedQty,BatchQty, orderNo, item];
 		this.executeQuery(sql, params, function (result) {
 			switch (result.status) {
 				case Result.SUCCESS:
@@ -724,9 +724,10 @@ var dbQueries = {
 	},
 
 	insertDeliveryData: function (itd, callBackFunction) {
-		var sql = "INSERT INTO DeliveryPickup ( OrderNo, ItemId, Item, Description, ExpectedQty, ConfirmedQty, Type, IsAdded, flag, LineNo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, (Select max(LineNo)+10 from DeliveryPickup where OrderNo=?))";
-		var params = [itd.orderNo, itd.itemId, itd.item, itd.itemDesc, '0', itd.confirmedQty, '', "TRUE", "0", itd.orderNo];
+		var sql = "INSERT INTO DeliveryPickup ( OrderNo, ItemId, Item, Description, ExpectedQty, ConfirmedQty,BatchQty, Type, IsAdded, flag, LineNo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, (Select max(LineNo)+10 from DeliveryPickup where OrderNo=?))";
+		var params = [itd.orderNo, itd.itemId, itd.item, itd.itemDesc, '0', itd.confirmedQty,itd.batchQty, '', "TRUE", "0", itd.orderNo];
 		this.executeQuery(sql, params, function (result) {
+            console.log("update result ", result);
 			switch (result.status) {
 				case Result.SUCCESS:
 					dbQueries.getLineNo(itd.orderNo, itd.itemId, function (lineNo) {

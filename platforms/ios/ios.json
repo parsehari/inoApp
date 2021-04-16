@@ -79,6 +79,10 @@
             {
               "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"SQLitePlugin\"><param name=\"ios-package\" value=\"SQLitePlugin\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -94,6 +98,18 @@
           "UIBackgroundModes": [
             {
               "xml": "<array><string>remote-notification</string></array>",
+              "count": 1
+            }
+          ],
+          "NSBluetoothPeripheralUsageDescription": [
+            {
+              "xml": "<string>2D barcode scanner</string>",
+              "count": 1
+            }
+          ],
+          "NSBluetoothAlwaysUsageDescription": [
+            {
+              "xml": "<string>2D barcode scanner</string>",
               "count": 1
             }
           ]
@@ -172,6 +188,13 @@
       "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
     },
     "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-bluetooth-peripheral-usage-description": {
+      "TEXT": "2D barcode scanner",
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
     }
   },
@@ -605,6 +628,14 @@
       "clobbers": [
         "Connection"
       ]
+    },
+    {
+      "id": "cordova-sqlite-storage.SQLitePlugin",
+      "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+      "pluginId": "cordova-sqlite-storage",
+      "clobbers": [
+        "SQLitePlugin"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -624,6 +655,8 @@
     "cordova-plugin-file-transfer": "1.7.1",
     "cordova-plugin-media": "5.0.2",
     "cordova-plugin-media-capture": "3.0.2",
-    "cordova-plugin-network-information": "2.0.1"
+    "cordova-plugin-network-information": "2.0.1",
+    "cordova-plugin-bluetooth-peripheral-usage-description": "1.0.1",
+    "cordova-sqlite-storage": "5.1.0"
   }
 }

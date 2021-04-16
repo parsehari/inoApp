@@ -25,7 +25,7 @@ var IKMobileDB =  {
     
 initialize: function()
 {
-        //alert("Initialize");
+        alert("Initialize");
     var self = this;
         this.db = window.openDatabase("ikmobiledb", "1.0", "IK Mobile DB", 1024*1024);
 

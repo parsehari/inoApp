@@ -1,5 +1,9 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
+//Var. used for storing scanned object and showing on the screen. ..hari
+var scanFlag;
+var scanItem = [];
+
 function onDeviceReady() {
 
 	console.log("API Auth:" + storeObject.auth);
@@ -13,6 +17,8 @@ function onDeviceReady() {
 
 	localStorage.removeItem("UserId");
 
+	localStorage.removeItem("UserId");
+	
 	// Initialize db and create Tables
 	IKMobileDB.initialize();
 
@@ -47,7 +53,7 @@ function onDeviceReady() {
 				ikMobile.batchNoTextHandler();
 			}
 		});
-
+		
 	};
 
 	// This Event Fire when keyboard hide
@@ -70,7 +76,7 @@ function onDeviceReady() {
 			ikMobile.batchNoTextHandler();
 		});
 	};
-
+	
 	// Test Code
 	// uploadLogFile("cdvfile://localhost/persistent/console.log")
 	// End test code here
@@ -548,6 +554,11 @@ $(function () {
 		ikMobile.displayRoutePlanReview();
 	});
 
+	//hari
+	$("#scanBtn").on("click", function () {
+		ikMobile.displayScanPlanReview();
+	});
+
 	$("#edit-btn").on("click", function () {
 		$("#edit-btn").hide();
 		$("#edit-done-btn").show();
@@ -1002,7 +1013,12 @@ $(function () {
 		$("#popupDialogExitConf").popup().popup("open");
 	});
 
-	$("#review-view .back-btn, #scan-new-item, #cancelBtn").on("click", function () {
+	$("#review-view .back-btn, #barcodeScan-view .back-btn, #scan-new-item, #cancelBtn").on("click", function () {
+		//Check for scan items are there or not while coming back to original screen via back button
+		//If elements are there then empty the array.
+		if(scanItem.length){
+			scanItem=[];
+		}
 		if (fromScreen == "overview") {
 			ikMobile.displayRoutePlanOverview();
 		} else {
@@ -1025,9 +1041,117 @@ $(function () {
 	$("#enterbatch-yes").on("click", ikMobile.enterBatchNumberYesBtnHandler);
 	$("#enterbatch-no").on("click", ikMobile.enterBatchNumberNoBtnHandler);
 
+	//Hari...
+	$('#scaninputID').off("change");
+		$('#scaninputID').on('keypress', function (e) {
+			console.log("outside if")
+			if (e.which == 13 || e.keyCode == 13) {
+				console.log("inside if")
+				this.value = (this.value.match(/.{1,9}/g));
+				var scanValue = this.value
+				if(scanValue)
+				buildTable(scanValue);
+			}
+		});
+
+	$("#scanConfirmBtn").on("click",function(){
+		if(scanItem.length == 0){
+			confirm("Please scan the QR code");
+			return;
+		}
+		var conf = confirm("Are you sure to continue?");
+		if(conf == true){
+			if (fromScreen == "overview") {
+				ikMobile.displayRoutePlanOverview();
+			} else {
+				ikMobile.displayRoutePlanDetailView();
+				$('a.menu-btn').removeClass('close-btn');
+				$.mobile.changePage("#details-view");
+			}
+		} 
+	});
+
 });
 
+//Function to prepare the table view of scanned result.
+function buildTable(data){
+	 scanItem = data.split(",");
+	//If for new records to update in existing array
+	// if(scanFlag){
+	// 	scanItem.push(dataVal);
+	// }else{
+	// 	//else for first new records to show in table
+	// 	scanItem = dataVal;
+	// }
+	// First check if a <tbody> tag exists, add one if not
+	if ($("#productTable tbody").length == 0) {
+		$("#productTable").append("<tbody style='display: block;height: 410px;overflow: auto;-webkit-overflow-scrolling:touch'></tbody>");
+	}
+		for(var i=0; i<scanItem.length; i++){
+		    // Append product to the table
+		    $("#productTable tbody").append("<tr>" +
+		    "<td style='font-size: 14px'>"+scanItem[i]+"</td>"+
+		    "<td>"+"<span onclick='productDelete(this, "+scanItem[i]+");' class='status-icon'><img class='route-plan-overview-img' src='./img/ICON_delete.png'/></span>" 
+			+"</button>"+"</td>"+
+		        "</tr>");
+				scanFlag = true;
+		}
+	
+	$("#serialnum").html(scanItem.length);
+	$("#scaninputID").val("");
+}
 
+// Function to delete any particular scan item from the table
+function productDelete(ctl, element) {
+	var conf = confirm("Are you sure you want to delete "+element+"?");
+	if(conf == true){
+	$(ctl).parents("tr").remove();
+	scanItem = jQuery.grep(scanItem, function(value) {
+		return value != element;
+	  });
+	} 
+	$("#serialnum").html(scanItem.length);
+}
+
+function getMaterialNumber(){
+	if(scanItem.length){
+		for (let i = 0, p = Promise.resolve(); i < scanItem.length; i++) {
+            console.log("first ",i);
+			p = p.then(_ => new Promise(resolve => setTimeout(function() {
+            	// $('#item-serial-no').val( scanItem[i] )
+				//toUpperCase
+					//  ikMobile.serialNoTextHandler();
+					 ikMobile.displayScanItemDetails('serial', scanItem[i].toUpperCase());
+					 if(i == scanItem.length-1){
+					 scanItem = [];
+					}
+                console.log("second", i);
+					resolve();
+            }, 500)
+			));
+	}
+}
+}
+
+ // Function call for updating the confirmed quanitity.
+// function getMaterialNumber(){
+// 	if(scanItem.length){
+// 		for(var i =0; i< scanItem.length; i++){
+// 			scanAllItem(i, scanItem[i]);
+// 		}
+// 	}
+// }
+
+// // callback function of getMaterialNumber();
+// function scanAllItem(i, value){
+// 	setTimeout(function() { 
+// 		$('#item-serial-no').val( value);
+// 		ikMobile.serialNoTextHandler();
+// 		if(i == scanItem.length-1){
+// 			scanItem = [];
+// 		}
+// 	}, 500); 
+// }
 
 var ikMobile = {
 
@@ -1594,6 +1718,43 @@ var ikMobile = {
 		}
 	},
 
+
+	//Added By Hari
+	//barcode scan view
+
+	displayScanPlanReview: function(){
+		this.reviewButtonsShowHide();
+		this.displayScanPlanReviewHeader();
+	},
+	
+	displayScanPlanReviewHeader: function(){
+		var selectedRoutePlanId = storeObject.selectedRoutePlanId;
+		var selectedRoutePlan = this.getRoutePlan(selectedRoutePlanId);
+		//var loggedInUser = storeObject.loggedInUser;
+		var selectedRoute = storeObject.selectedRoute;
+		var currentDate = this.getCurrentDate();
+		console.log("selectedRoutePlanId ", selectedRoutePlanId);
+		console.log("selectedRoutePlan ", selectedRoutePlan)
+		console.log("selectedRoute ", selectedRoutePlanId)
+		
+		//clearing all previous cache data of table
+		scanFlag = false;
+		if(scanItem.length){
+			scanItem = [];
+		}
+		$("#productTable").find("tr:gt(0)").remove();
+		$("#serialnum").html(scanItem.length);
+
+		$("#barcodeScan-view .header-text").html(selectedRoutePlanId + " Order Review");
+		$("#scan-plan-review-date").html(currentDate);
+		$("#scan-plan-review-route-name").html(selectedRoutePlan.routeName);
+		$("#scan-plan-review-driver-name").html(selectedRoutePlan.driverName);
+		$("#scan-plan-review-location").html(selectedRoute.location);
+		$("#scan-plan-review-name").html(selectedRoute.name);
+		$("#scan-plan-review-order-no").html(selectedRoute.orderNumber);
+		$("#customer-name").val(selectedRoute.customerName ? selectedRoute.customerName : '');
+	},
+
 	//Added By Siddhu
 	//Display Route Plan Review
 	displayRoutePlanReview: function () {
@@ -1769,10 +1930,12 @@ var ikMobile = {
 		var orderNo = storeObject.selectedRoute.orderNumber;
 		var orderType = "Delivery";
 		var routePlanId = storeObject.selectedRoutePlanId;
+       
 		dbQueries.getReviewDetails(orderNo, orderType, routePlanId, function (list) {
 			var selectElement = $("#delivery-review-table");
 			selectElement.empty();
 			for (var i = 0; i < list.length; i++) {
+                console.log("delivery details ", JSON.stringify(list[i]));
 				//Update view here
 				selectElement.append('<li class="review-line"><span class="delete-index-' + i + '"></span>' +
 					'<span class="item">' + list[i].Item + '</span>' +
@@ -1977,6 +2140,12 @@ var ikMobile = {
 			// alert("CLOSED");
 			$('a.menu-btn').removeClass('close-btn');
 		}
+
+		// If scan element array is not empty then confirmed the quantity 
+		if(scanItem.length){
+			getMaterialNumber();
+		}
+
 	},
 
 	//display route plan header details here
@@ -2087,6 +2256,7 @@ var ikMobile = {
 		var orderNo = storeObject.selectedRoute.orderNumber;
 
 		dbQueries.getDeliveryDetails(orderNo, function (list) {
+            
 			$('#details-delivery-table').empty();
 			var details_item;
 			var details_desc;
@@ -2105,12 +2275,13 @@ var ikMobile = {
 			}
 			for (var i = 0; i < list.length; i++) {
 				//Update delivery listview here
+                console.log("list ",JSON.stringify(list[i]));
 				var id = "order-detail-del-" + list[i].Item;
 				$('#details-delivery-table').append('<li id="' + id + '" data-material="' + list[i].Item + //added data-material to sync the inventory tab availability check
 					'"><span>&nbsp;</span><span class=' + details_item + '>' + list[i].Item + '</span>' +
 					'<span class=' + details_desc + '>' + (list[i].Description ? list[i].Description : '') + '</span>' +
 					'<span class=' + details_expQty + '>' + list[i].ExpectedQty + '</span>' +
-					'<span class=' + details_cnfQty + '>' + list[i].ConfirmedQty + '</span>' +
+					'<span class=' + details_cnfQty + '>' + list[i].BatchQty + '</span>' +
 					'<span class="delivery" data-delivery="' + (list[i].ExpectedQty - list[i].ConfirmedQty) + '">&nbsp;</span>' + // if expected quantity more than confirmed must deliver, else depends on item availability
 					'</li>');
 				$('#details-delivery-table').trigger("create");
@@ -2173,7 +2344,7 @@ var ikMobile = {
 	},
 
 	validateSerialNo: function (item) {
-
+console.log("in serial");
 		if (item.OrderNo != null) {
 			//alert("This Item is already delivered");
 			$("#popupOverlayItemDelivered").popup("open");
@@ -2196,9 +2367,11 @@ var ikMobile = {
 						for (var i = 0; i < list.length; i++) {
 
 							if (list[i].Item === item.Item) {
-
+                                
+                               // item.BatchQty = qty;
 								var newConfirmedQty;
 								if (!deliveryData) {
+                                    console.log("in one");
 									storeObject.deliveryData = {
 										operation: 'insert',
 										item: item,
@@ -2219,7 +2392,11 @@ var ikMobile = {
 										}, 3000);
 									}
 								} else {
+//                                    newConfirmedQty = qty;
+//                                    deliveryData.BatchQty = parseInt(deliveryData.ConfirmedQty) + qty;
+                                    
 									newConfirmedQty = parseInt(deliveryData.ConfirmedQty) + 1;
+                                    deliveryData.BatchQty = parseInt(deliveryData.ConfirmedQty) + 1;
 									if (newConfirmedQty > deliveryData.ExpectedQty) {
 										storeObject.deliveryData = {
 											operation: 'update',
@@ -2245,6 +2422,7 @@ var ikMobile = {
 										}
 
 									} else {
+                                       
 										storeObject.deliveryData = {
 											operation: 'update',
 											item: deliveryData,
@@ -2275,6 +2453,7 @@ var ikMobile = {
 	},
 
 	validateMaterialBatchNo: function (item) {
+        console.log("in material");
 		if (item) {
 			var invItemId = item.ItemId;
 			var itemName = item.Item;
@@ -2291,15 +2470,20 @@ var ikMobile = {
 						for (var i = 0; i < list.length; i++) {
 
 							if (list[i].Item === item.Item) {
-
+                                
+                                console.log("list ", list[i]);
+                                console.log("item ", item);
+                                console.log("delivery ", deliveryData);
+                                console.log("qty ", qty);
+                                item.BatchQty = qty;
 								var newConfirmedQty;
 								if (!deliveryData) {
-									storeObject.deliveryData = {
+                                    storeObject.deliveryData = {
 										operation: 'insert',
 										item: item,
 										newTotalQuantity: newTotalQuantity,
 										newConfirmedQty: qty,
-										invItemId: invItemId,
+                                     	invItemId: invItemId,
 										invUpdatedOrderNo: ''
 									};
 									if (list[i].TotalQuantity - list[i].CommitedQty >= qty) {
@@ -2315,8 +2499,10 @@ var ikMobile = {
 									}
 								} else {
 
-									newConfirmedQty = parseInt(deliveryData.ConfirmedQty) + qty;
-									// if (newConfirmedQty > deliveryData.ExpectedQty) {
+									newConfirmedQty = qty;
+                                    deliveryData.BatchQty = parseInt(deliveryData.ConfirmedQty) + qty;
+                                    
+                                   // if (newConfirmedQty > deliveryData.ExpectedQty) {
 
 									// newConfirmedQty = parseInt(deliveryData.ConfirmedQty) + qty;
 									if (deliveryData.ExpectedQty >= deliveryData.ConfirmedQty && deliveryData.ExpectedQty < newConfirmedQty) {
@@ -2325,7 +2511,7 @@ var ikMobile = {
 											item: deliveryData,
 											newTotalQuantity: newTotalQuantity,
 											newConfirmedQty: newConfirmedQty,
-											invItemId: invItemId,
+                                            invItemId: invItemId,
 											invUpdatedOrderNo: ''
 										};
 										// before this one check if the amount is delivarable
@@ -2343,12 +2529,12 @@ var ikMobile = {
 											}, 3000);
 										}
 									} else {
-										storeObject.deliveryData = {
+                                        storeObject.deliveryData = {
 											operation: 'update',
 											item: deliveryData,
 											newTotalQuantity: newTotalQuantity,
 											newConfirmedQty: newConfirmedQty,
-											invItemId: invItemId,
+                                         	invItemId: invItemId,
 											invUpdatedOrderNo: ''
 										};
 										ikMobile.updateDelivery();
@@ -2375,10 +2561,12 @@ var ikMobile = {
 
 	updateDelivery: function () {
 		var deliveryData = storeObject.deliveryData;
+        console.log("delivery data ", deliveryData);
 		if (deliveryData) {
 			var operation = deliveryData.operation;
 			var confirmedQty = deliveryData.newConfirmedQty;
-			var orderNo = storeObject.selectedRoute.orderNumber;
+            var itemQty = deliveryData.item.BatchQty;
+            var orderNo = storeObject.selectedRoute.orderNumber;
 			var itemName = deliveryData.item.Item;
 			var totalQty = deliveryData.newTotalQuantity;
 			var invItemId = deliveryData.invItemId;
@@ -2394,7 +2582,8 @@ var ikMobile = {
 					itemId: invItemId,
 					item: itemName,
 					itemDesc: itemDesc,
-					confirmedQty: confirmedQty
+					confirmedQty: confirmedQty,
+                    batchQty: itemQty
 				};
 				dbQueries.insertDeliveryData(data, function (updatedLineNo) {
 					//alert("DU :: "+updatedLineNo);
@@ -2414,7 +2603,7 @@ var ikMobile = {
 				});
 			} else if (operation == "update") {
 
-				dbQueries.updateConfirmedQtyForDelivery(confirmedQty, orderNo, itemName, function () {
+				dbQueries.updateConfirmedQtyForDelivery(confirmedQty,itemQty, orderNo, itemName, function () {
 					dbQueries.updateTotalQtyForDelivery(totalQty, invUpdatedOrderNo, invItemId, lineNo, function () {
 						//									alert("Item added successfully");
 						/*$("#popupOverlayItemAdded").popup("open");

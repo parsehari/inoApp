@@ -81,7 +81,7 @@ a:-webkit-any-link {
 }
 
 .ui-content {
-	padding: 0!important
+	padding: 0 !important
 }
 
 .ui-page-theme-a .ui-bar-inherit {
@@ -96,7 +96,7 @@ textarea:focus {
 }
 
 .ui-listview>.ui-li-static.ui-li-has-thumb {
-	padding-left: 0!important
+	padding-left: 0 !important
 }
 
 .ui-listview>.ui-li-static {
@@ -459,7 +459,7 @@ div.ui-mobile-viewport {
 }
 
 .ui-nojs {
-	position: absolute!important;
+	position: absolute !important;
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
@@ -586,7 +586,7 @@ div.ui-mobile-viewport {
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
-	outline: 0!important
+	outline: 0 !important
 }
 
 .ui-footer .ui-title {
@@ -638,7 +638,7 @@ div.ui-mobile-viewport {
 	width: 1.75em;
 	height: 1.75em;
 	text-indent: -9999px;
-	white-space: nowrap!important
+	white-space: nowrap !important
 }
 
 .ui-mini {
@@ -823,7 +823,7 @@ button.ui-btn-icon-notext {
 .ui-hide-label .ui-controlgroup-label,
 .ui-hide-label .ui-rangeslider label,
 .ui-hide-label>label {
-	position: absolute!important;
+	position: absolute !important;
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
@@ -831,7 +831,7 @@ button.ui-btn-icon-notext {
 }
 
 .ui-screen-hidden {
-	display: none!important
+	display: none !important
 }
 
 .ui-mobile-viewport-transitioning,
@@ -868,6 +868,7 @@ button.ui-btn-icon-notext {
 	0% {
 		opacity: 0
 	}
+
 	to {
 		opacity: 1
 	}
@@ -877,6 +878,7 @@ button.ui-btn-icon-notext {
 	0% {
 		opacity: 1
 	}
+
 	to {
 		opacity: 0
 	}
@@ -947,6 +949,7 @@ button.ui-btn-icon-notext {
 		transform: scale(.8);
 		opacity: 0
 	}
+
 	to {
 		transform: scale(1);
 		opacity: 1
@@ -958,6 +961,7 @@ button.ui-btn-icon-notext {
 		transform: scale(1);
 		opacity: 1
 	}
+
 	to {
 		transform: scale(.8);
 		opacity: 0
@@ -968,6 +972,7 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: translateX(100%)
 	}
+
 	to {
 		transform: translateX(0)
 	}
@@ -977,6 +982,7 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: translateX(-100%)
 	}
+
 	to {
 		transform: translateX(0)
 	}
@@ -986,6 +992,7 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: translateX(0)
 	}
+
 	to {
 		transform: translateX(-100%)
 	}
@@ -995,6 +1002,7 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: translateX(0)
 	}
+
 	to {
 		transform: translateX(100%)
 	}
@@ -1141,6 +1149,7 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: translateY(-100%)
 	}
+
 	to {
 		transform: translateY(0)
 	}
@@ -1150,6 +1159,7 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: translateY(0)
 	}
+
 	to {
 		transform: translateY(-100%)
 	}
@@ -1201,6 +1211,7 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: translateY(100%)
 	}
+
 	to {
 		transform: translateY(0)
 	}
@@ -1210,6 +1221,7 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: translateY(0)
 	}
+
 	to {
 		transform: translateY(100%)
 	}
@@ -1319,6 +1331,7 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: rotateY(0)
 	}
+
 	to {
 		transform: rotateY(-90deg) scale(.9)
 	}
@@ -1328,6 +1341,7 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: rotateY(0)
 	}
+
 	to {
 		transform: rotateY(90deg) scale(.9)
 	}
@@ -1337,6 +1351,7 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: rotateY(-90deg) scale(.9)
 	}
+
 	to {
 		transform: rotateY(0)
 	}
@@ -1346,6 +1361,7 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: rotateY(90deg) scale(.9)
 	}
+
 	to {
 		transform: rotateY(0)
 	}
@@ -1416,10 +1432,12 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: translateX(0) scale(1)
 	}
+
 	60%,
 	70% {
 		transform: translateX(0) scale(.7)
 	}
+
 	to {
 		transform: translateX(-100%) scale(.7)
 	}
@@ -1429,10 +1447,12 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: translateX(0) scale(1)
 	}
+
 	60%,
 	70% {
 		transform: translateX(0) scale(.7)
 	}
+
 	to {
 		transform: translateX(100%) scale(.7)
 	}
@@ -1442,10 +1462,12 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: translateX(-100%) scale(.7)
 	}
+
 	30%,
 	40% {
 		transform: translateX(0) scale(.7)
 	}
+
 	to {
 		transform: translateX(0) scale(1)
 	}
@@ -1455,10 +1477,12 @@ button.ui-btn-icon-notext {
 	0% {
 		transform: translateX(100%) scale(.7)
 	}
+
 	30%,
 	40% {
 		transform: translateX(0) scale(.7)
 	}
+
 	to {
 		transform: translateX(0) scale(1)
 	}
@@ -1483,20 +1507,24 @@ button.ui-btn-icon-notext {
 }
 
 @media (min-width:28em) {
+
 	.ui-field-contain,
 	.ui-mobile fieldset.ui-field-contain {
 		padding: 0;
 		margin: 1em 0;
 		border-bottom-width: 0
 	}
+
 	.ui-field-contain:after,
 	.ui-field-contain:before {
 		content: "";
 		display: table
 	}
+
 	.ui-field-contain:after {
 		clear: both
 	}
+
 	.ui-field-contain .ui-controlgroup-label,
 	.ui-field-contain>.ui-rangeslider>label,
 	.ui-field-contain>label {
@@ -1504,6 +1532,7 @@ button.ui-btn-icon-notext {
 		width: 20%;
 		margin: .5em 2% 0 0
 	}
+
 	.ui-popup .ui-field-contain .ui-controlgroup-label,
 	.ui-popup .ui-field-contain>.ui-rangeslider>label,
 	.ui-popup .ui-field-contain>label {
@@ -1511,12 +1540,14 @@ button.ui-btn-icon-notext {
 		width: auto;
 		margin: 0 0 .4em
 	}
+
 	.ui-field-contain .ui-controlgroup-controls,
 	.ui-field-contain>label~[class*=ui-] {
 		float: left;
 		width: 78%;
 		box-sizing: border-box
 	}
+
 	.ui-hide-label .ui-controlgroup-controls,
 	.ui-hide-label>label~[class*=ui-],
 	.ui-popup .ui-field-contain .ui-controlgroup-controls,
@@ -1524,10 +1555,12 @@ button.ui-btn-icon-notext {
 		float: none;
 		width: 100%
 	}
+
 	.ui-field-contain>label~.ui-btn-inline {
 		width: auto;
 		margin-right: .625em
 	}
+
 	.ui-field-contain>label~.ui-btn-inline.ui-btn-icon-notext {
 		width: 1.75em
 	}
@@ -1623,6 +1656,7 @@ ul.ui-grid-solo {
 }
 
 @media (max-width:35em) {
+
 	.ui-responsive>.ui-block-a,
 	.ui-responsive>.ui-block-b,
 	.ui-responsive>.ui-block-c,
@@ -1705,7 +1739,7 @@ ul.ui-grid-solo {
 
 .ui-page-footer-fullscreen .ui-fixed-hidden,
 .ui-page-header-fullscreen .ui-fixed-hidden {
-	position: absolute!important;
+	position: absolute !important;
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
@@ -1848,7 +1882,7 @@ ul.ui-grid-solo {
 }
 
 .ui-input-btn.ui-state-disabled input {
-	position: absolute!important;
+	position: absolute !important;
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
@@ -1897,7 +1931,7 @@ ul.ui-grid-solo {
 }
 
 .ui-collapsible-heading-status {
-	position: absolute!important;
+	position: absolute !important;
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
@@ -2103,7 +2137,7 @@ fieldset.ui-controlgroup {
 }
 
 .ui-controlgroup-controls>label {
-	position: absolute!important;
+	position: absolute !important;
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
@@ -2111,7 +2145,7 @@ fieldset.ui-controlgroup {
 }
 
 .ui-dialog {
-	background: none!important
+	background: none !important
 }
 
 .ui-dialog-contain {
@@ -2147,7 +2181,7 @@ fieldset.ui-controlgroup {
 
 .ui-popup-open .ui-footer-fixed,
 .ui-popup-open .ui-header-fixed {
-	position: absolute!important
+	position: absolute !important
 }
 
 .ui-popup-screen {
@@ -2187,7 +2221,7 @@ fieldset.ui-controlgroup {
 .ui-popup-hidden {
 	left: 0;
 	top: 0;
-	position: absolute!important;
+	position: absolute !important;
 	visibility: hidden
 }
 
@@ -2430,7 +2464,7 @@ fieldset.ui-controlgroup {
 	width: 22px;
 	height: 22px;
 	margin: -11px 0 0;
-	outline: 0!important;
+	outline: 0 !important;
 	z-index: 1
 }
 
@@ -2442,7 +2476,7 @@ fieldset.ui-controlgroup {
 
 .ui-checkbox input:disabled,
 .ui-radio input:disabled {
-	position: absolute!important;
+	position: absolute !important;
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
@@ -2456,7 +2490,7 @@ fieldset.ui-controlgroup {
 }
 
 .ui-select>select {
-	position: absolute!important;
+	position: absolute !important;
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
@@ -2528,7 +2562,7 @@ fieldset.ui-controlgroup {
 .ui-select .ui-btn>span:not(.ui-li-count) {
 	display: block;
 	text-overflow: ellipsis;
-	overflow: hidden!important;
+	overflow: hidden !important;
 	white-space: nowrap
 }
 
@@ -2999,7 +3033,7 @@ input.ui-slider-input {
 }
 
 select.ui-slider-switch {
-	position: absolute!important;
+	position: absolute !important;
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
@@ -3102,7 +3136,7 @@ html .ui-popup .ui-field-contain div.ui-slider-switch {
 	font-size: 36px;
 	padding-top: 14px;
 	opacity: .8;
-	position: absolute!important;
+	position: absolute !important;
 	text-align: center;
 	z-index: 5
 }
@@ -3170,7 +3204,7 @@ html>body .ui-rangeslider.ui-mini .ui-rangeslider-sliders .ui-slider-track:first
 }
 
 div.ui-rangeslider label {
-	position: absolute!important;
+	position: absolute !important;
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
@@ -3443,6 +3477,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 @media only all {
+
 	td.ui-table-priority-1,
 	td.ui-table-priority-2,
 	td.ui-table-priority-3,
@@ -3460,6 +3495,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 @media screen and (min-width:20em) {
+
 	.ui-table-columntoggle.ui-responsive td.ui-table-priority-1,
 	.ui-table-columntoggle.ui-responsive th.ui-table-priority-1 {
 		display: table-cell
@@ -3467,6 +3503,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 @media screen and (min-width:30em) {
+
 	.ui-table-columntoggle.ui-responsive td.ui-table-priority-2,
 	.ui-table-columntoggle.ui-responsive th.ui-table-priority-2 {
 		display: table-cell
@@ -3474,6 +3511,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 @media screen and (min-width:40em) {
+
 	.ui-table-columntoggle.ui-responsive td.ui-table-priority-3,
 	.ui-table-columntoggle.ui-responsive th.ui-table-priority-3 {
 		display: table-cell
@@ -3481,6 +3519,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 @media screen and (min-width:50em) {
+
 	.ui-table-columntoggle.ui-responsive td.ui-table-priority-4,
 	.ui-table-columntoggle.ui-responsive th.ui-table-priority-4 {
 		display: table-cell
@@ -3488,6 +3527,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 @media screen and (min-width:60em) {
+
 	.ui-table-columntoggle.ui-responsive td.ui-table-priority-5,
 	.ui-table-columntoggle.ui-responsive th.ui-table-priority-5 {
 		display: table-cell
@@ -3495,6 +3535,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 @media screen and (min-width:70em) {
+
 	.ui-table-columntoggle.ui-responsive td.ui-table-priority-6,
 	.ui-table-columntoggle.ui-responsive th.ui-table-priority-6 {
 		display: table-cell
@@ -3521,18 +3562,22 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 @media only all {
+
 	.ui-table-reflow thead td,
 	.ui-table-reflow thead th {
 		display: none
 	}
+
 	.ui-table-reflow td,
 	.ui-table-reflow th {
 		text-align: left;
 		display: block
 	}
+
 	.ui-table-reflow tbody th {
 		margin-top: 3em
 	}
+
 	.ui-table-reflow td .ui-table-cell-label,
 	.ui-table-reflow th .ui-table-cell-label {
 		padding: .4em;
@@ -3540,6 +3585,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 		display: inline-block;
 		margin: -.4em 1em -.4em -.4em
 	}
+
 	.ui-table-reflow td .ui-table-cell-label-top,
 	.ui-table-reflow th .ui-table-cell-label-top {
 		display: block;
@@ -3552,6 +3598,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 @media (min-width:35em) {
+
 	.ui-table-reflow.ui-responsive tbody td,
 	.ui-table-reflow.ui-responsive tbody th,
 	.ui-table-reflow.ui-responsive td,
@@ -3561,6 +3608,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 		display: table-cell;
 		margin: 0
 	}
+
 	.ui-table-reflow.ui-responsive td .ui-table-cell-label,
 	.ui-table-reflow.ui-responsive th .ui-table-cell-label {
 		display: none
@@ -3568,6 +3616,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 @media (max-width:35em) {
+
 	.ui-table-reflow.ui-responsive td,
 	.ui-table-reflow.ui-responsive th {
 		width: 100%;
@@ -3660,12 +3709,14 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 @media screen and (max-device-width:768px) {
+
 	.ui-page-footer-fixed .ui-panel-animate.ui-panel-wrapper,
 	.ui-page-header-fixed .ui-panel-animate.ui-panel-wrapper,
 	.ui-panel-animate.ui-panel-fixed-toolbar {
 		transition: none;
 		-ms-transition: none
 	}
+
 	.ui-panel-animate.ui-panel-fixed-toolbar {
 		-ms-transition: -ms-transform 1ms;
 		transform: rotate(0deg);
@@ -3792,12 +3843,15 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 	.ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-left {
 		margin-right: 27em
 	}
+
 	.ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-right {
 		margin-left: 27em
 	}
+
 	.ui-responsive-panel .ui-panel-page-content-open {
 		width: auto
 	}
+
 	.ui-responsive-panel.ui-page-active~.ui-panel-dismiss-display-push,
 	.ui-responsive-panel .ui-panel-dismiss-display-push {
 		display: none
@@ -4143,7 +4197,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 
 .inner-info-wrap-left {
 	float: left;
-	margin-right: 20px
+	/* margin-right: 20px */
 }
 
 #details-right-comments-wrap,
@@ -4595,7 +4649,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 	margin: 0;
 	background-color: #fff6f6;
 	border-radius: 0;
-	font-weight: 400!important;
+	font-weight: 400 !important;
 	margin: 0 -1px;
 	width: 100%
 }
@@ -4661,13 +4715,13 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 #details-delivery-table li.ui-collapsible h6.ui-collapsible-heading a.ui-collapsible-heading-toggle.ui-btn-icon-left,
 #details-inventory-table li.ui-collapsible h6.ui-collapsible-heading a.ui-collapsible-heading-toggle.ui-btn-icon-left,
 #details-pickup-table li.ui-collapsible h6.ui-collapsible-heading a.ui-collapsible-heading-toggle.ui-btn-icon-left {
-	padding-left: 0!important
+	padding-left: 0 !important
 }
 
 #details-delivery-table li.ui-collapsible h6.ui-collapsible-heading a.ui-collapsible-heading-toggle.ui-btn-icon-left:after,
 #details-inventory-table li.ui-collapsible h6.ui-collapsible-heading a.ui-collapsible-heading-toggle.ui-btn-icon-left:after,
 #details-pickup-table li.ui-collapsible h6.ui-collapsible-heading a.ui-collapsible-heading-toggle.ui-btn-icon-left:after {
-	left: 0!important
+	left: 0 !important
 }
 
 #details-delivery-table li.ui-collapsible h6.ui-collapsible-heading a.ui-collapsible-heading-toggle span,
@@ -4766,13 +4820,21 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 	margin-top: 10px
 }
 
+/* Added By Hari */
 #scan-panel .details-input-wraps {
-	float: left;
+	/* float: left;
 	clear: both;
 	width: 100%;
 	padding: 0 20px 10px;
 	margin-bottom: 15px;
-	border-bottom: 1px solid #e6e6e6
+	border-bottom: 1px solid #e6e6e6 */
+	float: left;
+	clear: both;
+	width: 100%;
+	padding: 5px 0px 5px;
+	border-bottom: 1px solid #e6e6e6;
+	padding-left: 10px !important;
+	padding-right: 10px !important;
 }
 
 #scan-panel .details-input-wraps input {
@@ -4795,7 +4857,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 #scan-panel .details-input-wraps input:focus {
-	border: 2px solid #6dc069!important
+	border: 2px solid #6dc069 !important
 }
 
 #scan-panel .details-input-wraps input#item-hours:disabled,
@@ -4844,7 +4906,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 .ui-state-default a {
-	font-size: 16px!important;
+	font-size: 16px !important;
 	letter-spacing: 0;
 	color: #00A1B2
 }
@@ -4859,7 +4921,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 .ui-state-active a {
-	font-size: 16px!important;
+	font-size: 16px !important;
 	letter-spacing: 0;
 	color: #423c54
 }
@@ -4986,13 +5048,34 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 	width: 100%
 }
 
+#review-top-wrap #info-wrap-scan {
+	width: 60%;
+}
+
+#review-top-wrap #info-wrap-barcode-scan {
+	width: 35%;
+}
+
+/* Create four equal columns that floats next to each other */
+.column1 {
+	float: left;
+	width: 12%;
+}
+
+/* Clear floats after the columns */
+.rowcustom:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
 .review-list-overfolow {
 	width: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
 	height: 220px;
-	margin: 0!important
+	margin: 0 !important
 }
 
 .review-table-wrap {
@@ -5274,6 +5357,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 	width: 100%;
 	min-width: 1024px
 }
+
 /* bsl */
 [data-role=popup] a button {
 	background: #00A1B2;
@@ -5305,7 +5389,8 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 #signIn-btn {
-	background: #00A1B2;;
+	background: #00A1B2;
+	;
 	background-image: linear-gradient(-180deg, hsla(0, 0%, 100%, .25), hsla(0, 0%, 100%, 0) 59%);
 	box-shadow: 0 2px 0 0 rgba(0, 0, 0, .1), inset 0 -1px 0 0 rgba(0, 101, 67, .25), inset 0 1px 0 0 hsla(0, 0%, 100%, .25);
 	border-width: 0;
@@ -5321,6 +5406,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 	background: #cfcfd0;
 	box-shadow: 0 2px 0 0 rgba(0, 0, 0, .1), inset 0 -1px 0 0 rgba(66, 60, 84, .1), inset 0 1px 0 0 hsla(0, 0%, 100%, .25)
 }
+
 /* bsl */
 #arrivalBtn,
 #cancelBtn,
@@ -5332,6 +5418,8 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 #mainmenuSignOutOne,
 #review-submitconfirmation-RoutePlanReview,
 #reviewBtn,
+#scanBtn,
+#scanConfirmBtn,
 #submitBtn {
 	background: #00A1B2;
 	background-image: linear-gradient(-180deg, hsla(0, 0%, 100%, .25), hsla(0, 0%, 100%, 0) 59%);
@@ -5357,7 +5445,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 
 #arrivalBtn,
 #departureBtn {
-	background:transparent;
+	background: transparent;
 	background-image: linear-gradient(-180deg, hsla(0, 0%, 100%, .25), hsla(0, 0%, 100%, 0) 59%);
 	box-shadow: 0 2px 0 0 rgba(0, 0, 0, .1), inset 0 -1px 0 0 rgba(0, 101, 67, .25), inset 0 1px 0 0 hsla(0, 0%, 100%, .25);
 	border-width: 0;
@@ -5374,6 +5462,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 	box-shadow: 0 2px 0 0 rgba(0, 0, 0, .1), inset 0 -1px 0 0 rgba(66, 60, 84, .1), inset 0 1px 0 0 hsla(0, 0%, 100%, .25);
 	float: left
 }
+
 /* Bsl */
 #cancelBtn,
 #exitBtn,
@@ -5429,7 +5518,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 .menu-btn,
 .menu-btn.close-btn {
 	opacity: 1;
-	transition: "left" .7s ease-out
+	transition: "left".7s ease-out
 }
 
 .menu-btn.close-btn {
@@ -5473,7 +5562,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 .ui-popup-container input:focus {
-	border: 2px solid #6dc069!important
+	border: 2px solid #6dc069 !important
 }
 
 #route-info-route-name:before {
@@ -5528,6 +5617,30 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 	content: "Order Number"
 }
 
+#scan-plan-review-date:before {
+	content: "Date"
+}
+
+#scan-plan-review-route-name:before {
+	content: "Route Name"
+}
+
+#scan-plan-review-driver-name:before {
+	content: "Driver Name"
+}
+
+#scan-plan-review-location:before {
+	content: "Location"
+}
+
+#scan-plan-review-name:before {
+	content: "Name"
+}
+
+#scan-plan-review-order-no:before {
+	content: "Order Number"
+}
+
 .info-long {
 	background-color: #fff;
 	position: relative;
@@ -5536,7 +5649,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 	font-size: 16px;
 	text-align: left;
 	height: 55px;
-	width: 296px;
+	width: 275px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap
@@ -5547,6 +5660,25 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 	top: 7px;
 	color: #726c84;
 	font-size: 12px
+}
+
+/* Hari */
+
+
+.inner-info-wrap-left-scan {
+	float: left;
+	padding-top: 7%;
+}
+
+.input-scan {
+	float: right;
+	/* padding-top: 5%; */
+	padding-right: 15px;
+	width: 30%;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
 }
 
 #customer-name {
@@ -5568,7 +5700,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 }
 
 #customer-name:focus {
-	border: 2px solid #6dc069!important
+	border: 2px solid #6dc069 !important
 }
 
 @font-face {
@@ -5614,8 +5746,8 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 
 #loginpopup,
 #popupLoaderSyncApp {
-	background: transparent!important;
-	border: none!important
+	background: transparent !important;
+	border: none !important
 }
 
 .active-tab-bottom-border-fix {
@@ -5637,7 +5769,7 @@ html .ui-popup .ui-field-contain>label+.ui-flipswitch {
 
 [class*=" icon-"],
 [class^=icon-] {
-	font-family: icomoon!important;
+	font-family: icomoon !important;
 	speak: none;
 	font-style: normal;
 	font-weight: 400;

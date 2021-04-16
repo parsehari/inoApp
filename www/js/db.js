@@ -25,14 +25,15 @@ var IKMobileDB =  {
     
 initialize: function()
 {
-        //alert("Initialize");
+    console.log("Initialize");
     var self = this;
-        this.db = window.openDatabase("ikmobiledb", "1.0", "IK Mobile DB", 1024*1024);
-
+      //  this.db = window.sqlitePlugin.openDatabase("ikmobiledb", "1.0", "IK Mobile DB", 1024*1024);
+      this.db = window.sqlitePlugin.openDatabase({name: "ikmobiledb", location: 'default'});
     this.db.transaction(
                         function(tx) {
                         tx.executeSql("SELECT name FROM sqlite_master WHERE type='table' AND name='RoutePlan'", this.txErrorHandler,
                                         function(tx, results) {
+                                        
                                             if (results.rows.length == 1)
                                             {
                                                 console.log('Using existing database in local database');

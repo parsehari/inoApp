@@ -117,7 +117,10 @@
       "id": "phonegap-plugin-push@2.2.3"
     },
     "is_top_level": true,
-    "variables": {}
+    "variables": {
+      "ANDROID_SUPPORT_V13_VERSION": "27.+",
+      "FCM_VERSION": "11.6.2"
+    }
   },
   "cordova-plugin-device-motion": {
     "source": {
@@ -133,6 +136,48 @@
       "id": "cordova-plugin-network-information"
     },
     "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-bluetoothle": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-bluetoothle@6.3.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-bluetooth-peripheral-usage-description": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-bluetooth-peripheral-usage-description"
+    },
+    "is_top_level": true,
+    "variables": {
+      "TEXT": "2D barcode scanner"
+    }
+  },
+  "cordova-sqlite-storage": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-sqlite-storage"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-support-google-services": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-support-google-services@~1.1.0"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "phonegap-plugin-multidex": {
+    "source": {
+      "type": "registry",
+      "id": "phonegap-plugin-multidex@~1.0.0"
+    },
+    "is_top_level": false,
     "variables": {}
   }
 }

@@ -21,7 +21,10 @@
     "cordova-plugin-network-information": "^2.0.1",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-vibration": "^3.1.0",
+    "cordova-sqlite-storage": "^5.1.0",
+    "cordova-support-google-services": "^1.1.0",
     "gulp": "^3.9.1",
+    "phonegap-plugin-multidex": "^1.0.0",
     "phonegap-plugin-push": "^2.2.3"
   },
   "devDependencies": {
@@ -61,7 +64,8 @@
         "KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE": "NO"
       },
       "cordova-plugin-media-capture": {},
-      "cordova-plugin-network-information": {}
+      "cordova-plugin-network-information": {},
+      "cordova-sqlite-storage": {}
     },
     "platforms": [
       "ios"

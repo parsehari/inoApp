@@ -58,6 +58,13 @@
     },
     "cordova-plugin-network-information": {
       "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-bluetooth-peripheral-usage-description": {
+      "TEXT": "2D barcode scanner",
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
     }
   },
   "dependent_plugins": {}
